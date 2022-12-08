@@ -15,6 +15,9 @@ export const styles = StyleSheet.create({
     width: '100%',
     padding: 12,
   },
+  itemContainerActive: {
+    borderColor: '#00ff00',
+  },
   separator: {
     height: 24,
   },

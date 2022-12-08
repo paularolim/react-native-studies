@@ -8,23 +8,27 @@ import {
 } from 'react-native';
 import React, { forwardRef, useCallback, useState } from 'react';
 import { Modalize } from 'react-native-modalize';
-import { OnLayoutProps } from './types';
+import { ModalItemProps, OnLayoutProps } from './types';
 import { styles } from './styles';
-import { EnumType } from '../../enums/types';
 import { useModalList } from './useModalList';
 
 export const ModalList = forwardRef<Modalize, any>((_, ref) => {
   const [modalHeight, setModalHeight] = useState(0);
 
-  const { onClose, data } = useModalList();
+  const { onClose, data, onPressModalItem } = useModalList();
 
   const Item = useCallback(
-    ({ item }: ListRenderItemInfo<EnumType>) => (
-      <TouchableOpacity style={styles.itemContainer}>
+    ({ item }: ListRenderItemInfo<ModalItemProps>) => (
+      <TouchableOpacity
+        onPress={() => onPressModalItem(item)}
+        style={[
+          styles.itemContainer,
+          item.isSelected ? styles.itemContainerActive : {},
+        ]}>
         <Text>{item.value}</Text>
       </TouchableOpacity>
     ),
-    [],
+    [onPressModalItem],
   );
 
   const Separator = useCallback(() => <View style={styles.separator} />, []);

@@ -5,7 +5,8 @@ import { useModalList } from '../../modals/ModalList/useModalList';
 import { styles } from './styles';
 
 export const Home = () => {
-  const { currentModal, openModal, modalListRef } = useModalList();
+  const { currentModal, openModal, modalListRef, selectedItem } =
+    useModalList();
 
   return (
     <View style={styles.container}>
@@ -14,6 +15,7 @@ export const Home = () => {
 
         <View style={styles.info}>
           <Text>{`currentModal: ${currentModal}`}</Text>
+          <Text>{`selectedItem: ${JSON.stringify(selectedItem)}`}</Text>
         </View>
       </View>
 

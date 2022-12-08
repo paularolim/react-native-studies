@@ -4,6 +4,8 @@ import { Modalize } from 'react-native-modalize';
 import { IHandles } from 'react-native-modalize/lib/options';
 import { EnumType } from '../../enums/types';
 
+export type ModalItemProps = EnumType & { isSelected?: boolean };
+
 export type ModalOptions = 'gender' | 'cities';
 
 export type ModalRefType = Modalize;
@@ -32,5 +34,13 @@ export type ModalListContextProps = {
   /**
    * Returns the modal data. This data is exclusive for ModalList component, don't use in the screen.
    */
-  data: EnumType[];
+  data: ModalItemProps[];
+  /**
+   * Returns the selected item for current modal.
+   */
+  selectedItem: EnumType | null;
+  /**
+   * Execute this function on press item from list. This data is exclusive for ModalList component, don't use in the screen.
+   */
+  onPressModalItem: (item: ModalItemProps) => void;
 };
