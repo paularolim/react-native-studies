@@ -10,7 +10,7 @@ import React, { forwardRef, useCallback, useState } from 'react';
 import { Modalize } from 'react-native-modalize';
 import { ModalItemProps, OnLayoutProps } from './types';
 import { styles } from './styles';
-import { useModalList } from './useModalList';
+import { useModalList } from '../Hook';
 
 export const ModalList = forwardRef<Modalize, any>((_, ref) => {
   const [modalHeight, setModalHeight] = useState(0);
@@ -40,7 +40,7 @@ export const ModalList = forwardRef<Modalize, any>((_, ref) => {
   return (
     <Modalize
       ref={ref}
-      modalTopOffset={200}
+      modalTopOffset={400}
       onLayout={onLayout}
       onClose={onClose}
       handlePosition="inside">

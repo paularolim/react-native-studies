@@ -1,15 +1,13 @@
-import { ModalListContext } from './Context';
 import React, { useMemo, useRef, useState } from 'react';
+import { cities, EnumType, gender } from '../../../enums';
+import { ModalItemProps } from '../Component';
 import {
-  ModalItemProps,
+  ModalListContext,
   ModalListContextProps,
-  ModalListProviderProps,
   ModalOptions,
   ModalRefType,
-} from './types';
-import { EnumType } from '../../enums/types';
-import { cities } from '../../enums/cities';
-import { gender } from '../../enums/gender';
+} from '../Context';
+import { ModalListProviderProps } from './types';
 
 const enums: Record<ModalOptions, EnumType[]> = {
   cities: cities,

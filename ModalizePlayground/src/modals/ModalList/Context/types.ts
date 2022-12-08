@@ -1,18 +1,12 @@
-import { ReactNode, RefObject } from 'react';
-import { LayoutRectangle } from 'react-native';
+import { RefObject } from 'react';
 import { Modalize } from 'react-native-modalize';
 import { IHandles } from 'react-native-modalize/lib/options';
-import { EnumType } from '../../enums/types';
-
-export type ModalItemProps = EnumType & { isSelected?: boolean };
+import { EnumType } from '../../../enums';
+import { ModalItemProps } from '../Component';
 
 export type ModalOptions = 'gender' | 'cities';
 
 export type ModalRefType = Modalize;
-
-export type OnLayoutProps = { layout: LayoutRectangle };
-
-export type ModalListProviderProps = { children: ReactNode };
 
 export type ModalListContextProps = {
   /**
