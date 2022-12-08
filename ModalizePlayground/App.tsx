@@ -1,8 +1,9 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import { ModalListProvider } from './src/modals/ModalList/Provider';
+import { Home } from './src/screens/Home';
 
 export const App = () => (
-  <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-    <Text>App.tsx</Text>
-  </View>
+  <ModalListProvider>
+    <Home />
+  </ModalListProvider>
 );
