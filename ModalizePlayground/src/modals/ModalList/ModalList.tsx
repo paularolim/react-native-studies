@@ -8,7 +8,6 @@ import {
 } from 'react-native';
 import React, { forwardRef, useCallback, useState } from 'react';
 import { Modalize } from 'react-native-modalize';
-import { gender } from '../../enums/gender';
 import { OnLayoutProps } from './types';
 import { styles } from './styles';
 import { EnumType } from '../../enums/types';
@@ -17,7 +16,7 @@ import { useModalList } from './useModalList';
 export const ModalList = forwardRef<Modalize, any>((_, ref) => {
   const [modalHeight, setModalHeight] = useState(0);
 
-  const { onCloseModal } = useModalList();
+  const { onClose, data } = useModalList();
 
   const Item = useCallback(
     ({ item }: ListRenderItemInfo<EnumType>) => (
@@ -39,13 +38,14 @@ export const ModalList = forwardRef<Modalize, any>((_, ref) => {
       ref={ref}
       modalTopOffset={200}
       onLayout={onLayout}
-      onClose={onCloseModal}>
+      onClose={onClose}
+      handlePosition="inside">
       <ScrollView
         horizontal
         style={{ height: modalHeight }}
         scrollEnabled={false}>
         <FlatList
-          data={gender}
+          data={data}
           renderItem={Item}
           style={styles.listContainer}
           contentContainerStyle={styles.listContent}
