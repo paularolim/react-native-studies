@@ -7,7 +7,7 @@ import {
   ModalOptions,
   ModalRefType,
 } from '../Context';
-import { ModalListProviderProps } from './types';
+import { ModalListProviderProps, OpenModalProps } from './types';
 
 const enums: Record<ModalOptions, EnumType[]> = {
   cities: cities,
@@ -27,6 +27,7 @@ const formatEnum = (
 export const ModalListProvider = ({ children }: ModalListProviderProps) => {
   const modalListRef = useRef<ModalRefType>(null);
 
+  const [currentKey, setCurrentKey] = useState<string | null>(null);
   const [currentModal, setCurrentModal] = useState<ModalOptions | null>(null);
   const [selectedItem, setSelectedItem] = useState<EnumType | null>(null);
 
@@ -39,18 +40,21 @@ export const ModalListProvider = ({ children }: ModalListProviderProps) => {
     setSelectedItem(item);
   };
 
-  const openModal = (modal: ModalOptions) => {
+  const openModal = ({ modal, key }: OpenModalProps) => {
     setCurrentModal(modal);
+    setCurrentKey(key);
     modalListRef.current?.open();
   };
 
   const onClose = () => {
     setCurrentModal(null);
+    setCurrentKey(null);
     setSelectedItem(null);
   };
 
   const value = useMemo<ModalListContextProps>(
     () => ({
+      key: currentKey,
       currentModal,
       modalListRef,
       openModal,
@@ -59,7 +63,7 @@ export const ModalListProvider = ({ children }: ModalListProviderProps) => {
       selectedItem,
       onPressModalItem,
     }),
-    [currentModal, data, selectedItem],
+    [currentKey, currentModal, data, selectedItem],
   );
 
   return (
