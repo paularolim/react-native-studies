@@ -23,6 +23,10 @@ export type ModalListContextProps = {
    */
   openModal: (props: OpenModalProps) => void;
   /**
+   * Execute this function to close modal in the screen.
+   */
+  closeModal: () => void;
+  /**
    * Execute this function on close event. This function is exclusive for ModalList component, don't use in the screen.
    */
   onClose: () => void;

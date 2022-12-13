@@ -38,12 +38,17 @@ export const ModalListProvider = ({ children }: ModalListProviderProps) => {
 
   const onPressModalItem = (item: ModalItemProps) => {
     setSelectedItem(item);
+    // modalListRef.current?.close();
   };
 
   const openModal = ({ modal, key }: OpenModalProps) => {
     setCurrentModal(modal);
     setCurrentKey(key);
     modalListRef.current?.open();
+  };
+
+  const closeModal = () => {
+    modalListRef.current?.close();
   };
 
   const onClose = () => {
@@ -58,6 +63,7 @@ export const ModalListProvider = ({ children }: ModalListProviderProps) => {
       currentModal,
       modalListRef,
       openModal,
+      closeModal,
       onClose,
       data,
       selectedItem,
